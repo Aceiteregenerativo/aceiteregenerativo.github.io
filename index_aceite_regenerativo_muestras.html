@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aceite Regenerativo | AOVE</title>
+  <meta name="description" content="Aceite Regenerativo: AOVE, Aceite de Oliva Virgen Extra, disponible en formatos de 250 ml, 500 ml, 750 ml, 1 L, 2,5 L y 5 L.">
+  <style>
+    :root{
+      --green:#173f2a;
+      --green2:#2f6545;
+      --cream:#f7f1df;
+      --gold:#c99b45;
+      --text:#1f2a22;
+      --white:#fffdf8;
+      --shadow:0 12px 35px rgba(0,0,0,.10);
+    }
+    *{box-sizing:border-box;scroll-behavior:smooth}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--text);background:var(--white)}
+    header{background:var(--green);color:white;position:sticky;top:0;z-index:10;box-shadow:0 3px 15px #0002}
+    nav{max-width:1150px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:18px 22px}
+    .logo{font-size:1.35rem;font-weight:800;letter-spacing:.5px}
+    .logo span{color:#e4c16a}
+    nav a{color:white;text-decoration:none;margin-left:22px;font-weight:600}
+    .hero{background:linear-gradient(120deg,#173f2a,#315f40);color:white;padding:90px 22px}
+    .hero-inner{max-width:1150px;margin:auto;display:grid;grid-template-columns:1.2fr .8fr;gap:45px;align-items:center}
+    .hero h1{font-size:clamp(2.5rem,6vw,4.7rem);line-height:1;margin:0 0 20px}
+    .hero p{font-size:1.2rem;line-height:1.6;max-width:650px;color:#edf4ec}
+    .btn{display:inline-block;background:var(--gold);color:#182719;padding:14px 22px;border-radius:9px;text-decoration:none;font-weight:800;border:0;cursor:pointer}
+    .olive-art{min-height:310px;border-radius:28px;background:radial-gradient(circle at 35% 35%,#7da35b 0 9%,transparent 10%),radial-gradient(circle at 65% 48%,#668c4c 0 11%,transparent 12%),linear-gradient(145deg,#496e3e,#213d28);box-shadow:var(--shadow);position:relative;overflow:hidden}
+    .olive-art:after{content:"🫒";font-size:130px;position:absolute;right:35px;bottom:20px;filter:drop-shadow(0 8px 5px #0004)}
+    section{max-width:1150px;margin:auto;padding:75px 22px}
+    .title{text-align:center;margin-bottom:42px}
+    .title h2{font-size:2.2rem;margin:0 0 10px;color:var(--green)}
+    .title p{margin:0;color:#68736b}
+    .products{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .card{background:white;border-radius:18px;padding:20px;box-shadow:var(--shadow);border:1px solid #eee}
+    .bottle{height:210px;border-radius:14px;background:linear-gradient(145deg,#e9e1c7,#fffaf0);display:flex;align-items:center;justify-content:center;margin-bottom:18px;position:relative}
+    .bottle-shape{width:76px;height:145px;background:linear-gradient(90deg,#6b7c32,#a5aa4d,#586b2d);border-radius:12px 12px 18px 18px;position:relative;box-shadow:0 8px 15px #0002}
+    .bottle-shape:before{content:"";position:absolute;width:30px;height:28px;background:#5b4a2c;left:23px;top:-25px;border-radius:5px}
+    .label{position:absolute;top:50px;left:7px;right:7px;background:#f8edc9;color:#28452e;text-align:center;padding:10px 3px;font-size:10px;font-weight:800}
+    .card h3{margin:8px 0;font-size:1.25rem;color:var(--green)}
+    .card p{color:#68736b;min-height:42px}
+    .price{font-size:1.4rem;font-weight:900;color:var(--green);margin:15px 0}
+    .buy{width:100%}
+    .about{background:var(--cream);max-width:none}
+    .about-inner{max-width:900px;margin:auto;text-align:center}
+    .about h2{color:var(--green);font-size:2.2rem}
+    .about p{font-size:1.08rem;line-height:1.8}
+    .contact-box{background:var(--green);color:white;border-radius:22px;padding:35px;text-align:center}
+    footer{background:#102b1d;color:#dfe9df;text-align:center;padding:30px 20px}
+    .cart{position:fixed;right:20px;bottom:20px;background:var(--gold);color:#162719;border:0;border-radius:50px;padding:15px 20px;font-weight:900;box-shadow:var(--shadow);cursor:pointer;z-index:20}
+    .modal{display:none;position:fixed;inset:0;background:#0008;z-index:30;align-items:center;justify-content:center;padding:20px}
+    .modal.open{display:flex}
+    .modal-box{background:white;border-radius:18px;padding:28px;max-width:520px;width:100%;max-height:85vh;overflow:auto}
+    .modal-box h2{color:var(--green);margin-top:0}
+    .item{display:flex;justify-content:space-between;border-bottom:1px solid #ddd;padding:12px 0;gap:10px}
+    .close{float:right;border:0;background:none;font-size:24px;cursor:pointer}
+    .checkout{width:100%;margin-top:18px}
+    @media(max-width:800px){
+      .hero-inner{grid-template-columns:1fr}
+      .products{grid-template-columns:1fr 1fr}
+      nav div:last-child a{margin-left:10px;font-size:.9rem}
+    }
+    @media(max-width:520px){
+      .products{grid-template-columns:1fr}
+      nav{flex-direction:column;gap:12px}
+      .hero{padding:60px 18px}
+      section{padding:55px 18px}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">🫒 Aceite <span>Regenerativo</span></div>
+    <div>
+      <a href="#productos">Productos</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <p style="color:#e4c16a;font-weight:800;letter-spacing:1px">AOVE · ACEITE DE OLIVA VIRGEN EXTRA</p>
+        <h1>AOVE de nuestra tierra.</h1>
+        <p>Descubre nuestro AOVE, Aceite de Oliva Virgen Extra, disponible en diferentes formatos para disfrutarlo en casa, compartirlo o regalarlo.</p>
+        <a class="btn" href="#productos">Ver productos</a>
+      </div>
+      <div class="olive-art" aria-label="Ilustración de olivos"></div>
+    </div>
+  </section>
+
+  <section id="productos">
+    <div class="title">
+      <h2>Nuestro AOVE</h2>
+      <p>Disponible en seis formatos para diferentes necesidades.</p>
+    </div>
+    <div class="products" id="productGrid"></div>
+  </section>
+
+  <section id="nosotros" class="about">
+    <div class="about-inner">
+      <h2>AOVE de nuestra tierra</h2>
+      <p>En Aceite Regenerativo queremos poner en valor el Aceite de Oliva Virgen Extra y el trabajo que hay detrás de cada cosecha. Aquí puedes contar la historia de tus olivos, la variedad de aceituna, la zona donde produces y cómo elaboras tu AOVE.</p>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="contact-box">
+      <h2>¿Quieres hacer un pedido?</h2>
+      <p>Escríbenos y te indicaremos disponibilidad, gastos de envío y cómo realizar el pago.</p>
+      <a class="btn" href="mailto:tuemail@ejemplo.com">Contactar por email</a>
+      <p style="font-size:.92rem;color:#edf4ec;margin-bottom:0">Recuerda cambiar este correo por tu correo real.</p>
+    </div>
+  </section>
+</main>
+
+<button class="cart" onclick="openCart()">🛒 Carrito (<span id="count">0</span>)</button>
+
+<div class="modal" id="cartModal" onclick="closeOutside(event)">
+  <div class="modal-box">
+    <button class="close" onclick="closeCart()">×</button>
+    <h2>Tu carrito</h2>
+    <div id="cartItems"></div>
+    <h3>Total: <span id="total">0,00 €</span></h3>
+    <button class="btn checkout" onclick="order()">Solicitar pedido</button>
+  </div>
+</div>
+
+<footer>
+  © 2026 Aceite Regenerativo · AOVE
+</footer>
+
+<script>
+  const products = [
+    {name:"AOVE 5 ml · Muestra gratis", size:"5 ml", price:0.00},
+    {name:"AOVE 20 ml · Muestra 1", size:"20 ml", price:0.00},
+    {name:"AOVE 20 ml · Muestra 2", size:"20 ml", price:0.00},
+    {name:"AOVE 20 ml · Muestra 3", size:"20 ml", price:0.00},
+    {name:"AOVE 250 ml", size:"250 ml", price:5.50},
+    {name:"AOVE 500 ml", size:"500 ml", price:8.50},
+    {name:"AOVE 750 ml", size:"750 ml", price:11.50},
+    {name:"AOVE 1 L", size:"1 litro", price:14.00},
+    {name:"AOVE 2,5 L", size:"2,5 litros", price:30.00},
+    {name:"AOVE 5 L", size:"5 litros", price:52.00}
+  ];
+
+  let cart = [];
+
+  function renderProducts(){
+    document.getElementById("productGrid").innerHTML = products.map((p,i)=>`
+      <article class="card">
+        <div class="bottle">
+          <div class="bottle-shape">
+            <div class="label">OLI DE LA<br>TERRA<br>${p.size}</div>
+          </div>
+        </div>
+        <h3>${p.name}</h3>
+        <p>Aceite de Oliva Virgen Extra · Formato ${p.size}.</p>
+        <div class="price">${p.price.toFixed(2).replace(".",",")} €</div>
+        <button class="btn buy" onclick="addToCart(${i})">Añadir al carrito</button>
+      </article>
+    `).join("");
+  }
+
+  function addToCart(i){
+    const existing = cart.find(x=>x.i===i);
+    if(existing) existing.qty++;
+    else cart.push({i,qty:1});
+    updateCart();
+  }
+
+  function updateCart(){
+    document.getElementById("count").textContent = cart.reduce((s,x)=>s+x.qty,0);
+    const items = document.getElementById("cartItems");
+    if(!cart.length){
+      items.innerHTML = "<p>El carrito está vacío.</p>";
+      document.getElementById("total").textContent = "0,00 €";
+      return;
+    }
+    items.innerHTML = cart.map(x=>`
+      <div class="item">
+        <span>${products[x.i].name} × ${x.qty}</span>
+        <strong>${(products[x.i].price*x.qty).toFixed(2).replace(".",",")} €</strong>
+      </div>
+    `).join("");
+    const total = cart.reduce((s,x)=>s+products[x.i].price*x.qty,0);
+    document.getElementById("total").textContent = total.toFixed(2).replace(".",",")+" €";
+  }
+
+  function openCart(){
+    updateCart();
+    document.getElementById("cartModal").classList.add("open");
+  }
+  function closeCart(){document.getElementById("cartModal").classList.remove("open")}
+  function closeOutside(e){if(e.target.id==="cartModal") closeCart()}
+
+  function order(){
+    if(!cart.length){alert("Añade algún producto al carrito.");return;}
+    const lines = cart.map(x=>`${products[x.i].name} x${x.qty}`).join("\\n");
+    const total = cart.reduce((s,x)=>s+products[x.i].price*x.qty,0);
+    const subject = encodeURIComponent("Pedido de aceite de oliva");
+    const body = encodeURIComponent(`Hola, quiero hacer este pedido:\\n\\n${lines}\\n\\nTotal: ${total.toFixed(2)} €\\n\\nNombre:\\nTeléfono:\\nDirección:`);
+    window.location.href = `mailto:tuemail@ejemplo.com?subject=${subject}&body=${body}`;
+  }
+
+  renderProducts();
+  updateCart();
+</script>
+</body>
+</html>
