@@ -181,8 +181,8 @@ const essentialProducts = [
         <h3>${p.name}</h3>
 
         <p>
-          ${isEssential ? "Aceite esencial" : "Aceite de Oliva Virgen Extra"} ·
-          ${p.size}.
+${isEssential ? p.description : "Aceite de Oliva Virgen Extra"}<br>
+Formato: ${p.size}.
         </p>
 
         <div class="price">
