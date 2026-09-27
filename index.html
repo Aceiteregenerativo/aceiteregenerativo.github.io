@@ -180,10 +180,10 @@ const essentialProducts = [
 
         <h3>${p.name}</h3>
 
-        <p>
-${isEssential ? p.description : "Aceite de Oliva Virgen Extra"}<br>
-Formato: ${p.size}.
-        </p>
+     <p>
+  ${p.description}<br>
+  Formato: ${p.size}.
+</p>
 
         <div class="price">
           ${p.price.toFixed(2).replace(".",",")} €
