@@ -196,15 +196,15 @@ const essentialProducts = [
     `;
   }
 
-  function renderProducts(){
-    document.getElementById("aoveGrid").innerHTML =
-      aoveProducts.map((p,i) => productCard(p, i, false)).join("");
+ function renderProducts(){
+  document.getElementById("aoveGrid").innerHTML =
+    aoveProducts.map((p, i) => productCard(p, i, false)).join("");
 
-    document.getElementById("essentialGrid").innerHTML =
-      essentialProducts.map(
-        (p,i) => productCard(p, aoveProducts.length + i, true)
-      ).join("");
-  }
+  document.getElementById("essentialGrid").innerHTML =
+    essentialProducts.map(
+      (p, i) => productCard(p, aoveProducts.length + i, true)
+    ).join("");
+}
 
   function addToCart(i){
     const existing = cart.find(x=>x.i===i);
