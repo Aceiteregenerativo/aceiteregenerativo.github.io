@@ -238,22 +238,45 @@ const essentialProducts = [
   function closeCart(){document.getElementById("cartModal").classList.remove("open")}
   function closeOutside(e){if(e.target.id==="cartModal") closeCart()}
 
-  function order(){
-    if(!cart.length){alert("Añade algún producto al carrito.");return;}
-  const lines = cart.map(x =>
-  `${products[x.i].name} x${x.qty} — ${(products[x.i].price * x.qty).toFixed(2).replace(".",",")} €`
-).join("\n");
-    const total = cart.reduce((s,x)=>s+products[x.i].price*x.qty,0);
-    const subject = encodeURIComponent("Pedido de aceite de oliva");
-    const body = encodeURIComponent(`Hola, quiero hacer este pedido:\\n\\n${lines}\\n\\nTotal: ${total.toFixed(2)} €\\n\\nNombre:\\nTeléfono:\\nDirección:`);
-  window.open(
-  `https://mail.google.com/mail/?view=cm&fs=1&to=Kggbb@hotmail.com&su=${subject}&body=${body}`,
-  "_blank"
-);
+function order(){
+  if(!cart.length){
+    alert("Añade algún producto al carrito.");
+    return;
   }
 
-  renderProducts();
-  updateCart();
-</script>
-</body>
-</html>
+  const lines = cart.map(x =>
+    `• ${products[x.i].name} — ${x.qty} x ${products[x.i].price.toFixed(2).replace(".",",")} € = ${(products[x.i].price * x.qty).toFixed(2).replace(".",",")} €`
+  ).join("\n");
+
+  const total = cart.reduce(
+    (s,x) => s + products[x.i].price * x.qty,
+    0
+  );
+
+  const subject = encodeURIComponent(
+    "Pedido - Aceite Regenerativo"
+  );
+
+  const body = encodeURIComponent(`Hola,
+
+Quiero hacer este pedido:
+
+PRODUCTOS
+
+${lines}
+
+TOTAL: ${total.toFixed(2).replace(".",",")} €
+
+DATOS DEL CLIENTE
+
+Nombre:
+Teléfono:
+Dirección:
+
+Gracias.`);
+
+  window.open(
+    `https://mail.google.com/mail/?view=cm&fs=1&to=Kggbb@hotmail.com&su=${subject}&body=${body}`,
+    "_blank"
+  );
+}
