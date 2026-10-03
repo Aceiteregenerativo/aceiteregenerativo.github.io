@@ -244,7 +244,9 @@ function order(){
     return;
   }
 
-  const lines = cart.map(x => {
+const lines = cart.map(x =>
+  `${products[x.i].name} x${x.qty} — ${(products[x.i].price * x.qty).toFixed(2).replace(".",",")} €`
+).join("\n");
     const product = products[x.i];
     const subtotal = product.price * x.qty;
 
@@ -258,7 +260,7 @@ function order(){
 
   const subject = "Pedido - Aceite Regenerativo";
 
-  const body =
+const body = encodeURIComponent(
 `Hola,
 
 Quiero hacer este pedido:
@@ -275,13 +277,15 @@ Nombre:
 Teléfono:
 Dirección:
 
-Gracias.`;
-
+Gracias.`
+);
   const gmailUrl =
     "https://mail.google.com/mail/?view=cm&fs=1" +
     "&to=" + encodeURIComponent("Kggbb@hotmail.com") +
     "&su=" + encodeURIComponent(subject) +
     "&body=" + encodeURIComponent(body);
 
-  window.open(gmailUrl, "_blank");
-}
+  window.open(
+  `https://mail.google.com/mail/?view=cm&fs=1&to=Kggbb@hotmail.com&su=${subject}&body=${body}`,
+  "_blank"
+);
