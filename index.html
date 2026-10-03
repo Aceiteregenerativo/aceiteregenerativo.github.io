@@ -240,7 +240,9 @@ const essentialProducts = [
 
   function order(){
     if(!cart.length){alert("Añade algún producto al carrito.");return;}
-    const lines = cart.map(x=>`${products[x.i].name} x${x.qty}`).join("\\n");
+  const lines = cart.map(x =>
+  `${products[x.i].name} x${x.qty} — ${(products[x.i].price * x.qty).toFixed(2).replace(".",",")} €`
+).join("\n");
     const total = cart.reduce((s,x)=>s+products[x.i].price*x.qty,0);
     const subject = encodeURIComponent("Pedido de aceite de oliva");
     const body = encodeURIComponent(`Hola, quiero hacer este pedido:\\n\\n${lines}\\n\\nTotal: ${total.toFixed(2)} €\\n\\nNombre:\\nTeléfono:\\nDirección:`);
