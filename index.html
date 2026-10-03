@@ -244,20 +244,22 @@ function order(){
     return;
   }
 
-  const lines = cart.map(x =>
-    `• ${products[x.i].name} — ${x.qty} x ${products[x.i].price.toFixed(2).replace(".",",")} € = ${(products[x.i].price * x.qty).toFixed(2).replace(".",",")} €`
-  ).join("\n");
+  const lines = cart.map(x => {
+    const product = products[x.i];
+    const subtotal = product.price * x.qty;
+
+    return `${product.name} — ${x.qty} x ${product.price.toFixed(2).replace(".",",")} € = ${subtotal.toFixed(2).replace(".",",")} €`;
+  }).join("\n");
 
   const total = cart.reduce(
-    (s,x) => s + products[x.i].price * x.qty,
+    (s, x) => s + products[x.i].price * x.qty,
     0
   );
 
-  const subject = encodeURIComponent(
-    "Pedido - Aceite Regenerativo"
-  );
+  const subject = "Pedido - Aceite Regenerativo";
 
-  const body = encodeURIComponent(`Hola,
+  const body =
+`Hola,
 
 Quiero hacer este pedido:
 
@@ -273,10 +275,13 @@ Nombre:
 Teléfono:
 Dirección:
 
-Gracias.`);
+Gracias.`;
 
-  window.open(
-    `https://mail.google.com/mail/?view=cm&fs=1&to=Kggbb@hotmail.com&su=${subject}&body=${body}`,
-    "_blank"
-  );
+  const gmailUrl =
+    "https://mail.google.com/mail/?view=cm&fs=1" +
+    "&to=" + encodeURIComponent("Kggbb@hotmail.com") +
+    "&su=" + encodeURIComponent(subject) +
+    "&body=" + encodeURIComponent(body);
+
+  window.open(gmailUrl, "_blank");
 }
