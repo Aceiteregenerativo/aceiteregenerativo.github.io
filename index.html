@@ -285,7 +285,10 @@ Gracias.`
     "&su=" + encodeURIComponent(subject) +
     "&body=" + encodeURIComponent(body);
 
-  window.open(
-  `https://mail.google.com/mail/?view=cm&fs=1&to=Kggbb@hotmail.com&su=${subject}&body=${body}`,
+ window.open(
+  "https://mail.google.com/mail/u/0/?view=cm&fs=1" +
+  "&to=" + encodeURIComponent("Kggbb@hotmail.com") +
+  "&su=" + encodeURIComponent(subject) +
+  "&body=" + encodeURIComponent(body),
   "_blank"
 );
