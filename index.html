@@ -244,7 +244,10 @@ const essentialProducts = [
     const total = cart.reduce((s,x)=>s+products[x.i].price*x.qty,0);
     const subject = encodeURIComponent("Pedido de aceite de oliva");
     const body = encodeURIComponent(`Hola, quiero hacer este pedido:\\n\\n${lines}\\n\\nTotal: ${total.toFixed(2)} €\\n\\nNombre:\\nTeléfono:\\nDirección:`);
-    window.location.href = `mailto:Kggbb@hotmail.com?subject=${subject}&body=${body}`;
+    window.location.href = window.open(
+  `https://mail.google.com/mail/?view=cm&fs=1&to=Kggbb@hotmail.com&su=${subject}&body=${body}`,
+  "_blank"
+);
   }
 
   renderProducts();
