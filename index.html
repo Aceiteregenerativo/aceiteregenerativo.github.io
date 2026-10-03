@@ -237,16 +237,13 @@ const essentialProducts = [
   }
   function closeCart(){document.getElementById("cartModal").classList.remove("open")}
   function closeOutside(e){if(e.target.id==="cartModal") closeCart()}
-
 function order(){
   if(!cart.length){
     alert("Añade algún producto al carrito.");
     return;
   }
 
-const lines = cart.map(x =>
-  `${products[x.i].name} x${x.qty} — ${(products[x.i].price * x.qty).toFixed(2).replace(".",",")} €`
-).join("\n");
+  const lines = cart.map(x => {
     const product = products[x.i];
     const subtotal = product.price * x.qty;
 
@@ -260,24 +257,30 @@ const lines = cart.map(x =>
 
   const subject = "Pedido - Aceite Regenerativo";
 
-const body =
-  "Hola,%0D%0A%0D%0A" +
-  "Quiero hacer este pedido:%0D%0A%0D%0A" +
-  "PRODUCTOS%0D%0A%0D%0A" +
-  encodeURIComponent(lines) +
-  "%0D%0A%0D%0A" +
-  "TOTAL: " + encodeURIComponent(total.toFixed(2).replace(".",",")) + " €" +
-  "%0D%0A%0D%0A" +
-  "DATOS DEL CLIENTE%0D%0A%0D%0A" +
-  "Nombre:%0D%0A" +
-  "Teléfono:%0D%0A" +
-  "Dirección:%0D%0A%0D%0A" +
-  "Gracias.";
+  const body =
+`Hola,
 
-const gmailUrl =
-  "https://mail.google.com/mail/u/0/?view=cm&fs=1" +
-  "&to=" + encodeURIComponent("Kggbb@hotmail.com") +
-  "&su=" + encodeURIComponent(subject) +
-  "&body=" + encodeURIComponent(body);
+Quiero hacer este pedido:
 
-window.open(gmailUrl, "_blank");
+PRODUCTOS
+
+${lines}
+
+TOTAL: ${total.toFixed(2).replace(".",",")} €
+
+DATOS DEL CLIENTE
+
+Nombre:
+Teléfono:
+Dirección:
+
+Gracias.`;
+
+  const gmailUrl =
+    "https://mail.google.com/mail/u/0/?view=cm&fs=1" +
+    "&to=" + encodeURIComponent("Kggbb@hotmail.com") +
+    "&su=" + encodeURIComponent(subject) +
+    "&body=" + encodeURIComponent(body);
+
+  window.open(gmailUrl, "_blank");
+}
