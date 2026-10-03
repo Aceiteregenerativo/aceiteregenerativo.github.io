@@ -260,35 +260,24 @@ const lines = cart.map(x =>
 
   const subject = "Pedido - Aceite Regenerativo";
 
-const body = encodeURIComponent(
-`Hola,
+const body =
+  "Hola,%0D%0A%0D%0A" +
+  "Quiero hacer este pedido:%0D%0A%0D%0A" +
+  "PRODUCTOS%0D%0A%0D%0A" +
+  encodeURIComponent(lines) +
+  "%0D%0A%0D%0A" +
+  "TOTAL: " + encodeURIComponent(total.toFixed(2).replace(".",",")) + " €" +
+  "%0D%0A%0D%0A" +
+  "DATOS DEL CLIENTE%0D%0A%0D%0A" +
+  "Nombre:%0D%0A" +
+  "Teléfono:%0D%0A" +
+  "Dirección:%0D%0A%0D%0A" +
+  "Gracias.";
 
-Quiero hacer este pedido:
-
-PRODUCTOS
-
-${lines}
-
-TOTAL: ${total.toFixed(2).replace(".",",")} €
-
-DATOS DEL CLIENTE
-
-Nombre:
-Teléfono:
-Dirección:
-
-Gracias.`
-);
-  const gmailUrl =
-    "https://mail.google.com/mail/?view=cm&fs=1" +
-    "&to=" + encodeURIComponent("Kggbb@hotmail.com") +
-    "&su=" + encodeURIComponent(subject) +
-    "&body=" + encodeURIComponent(body);
-
- window.open(
-  "https://mail.google.com/mail/u/0/?view=cm&fs=1" +
+const gmailUrl =
+  "https://mail.google.com/mail/?view=cm&fs=1" +
   "&to=" + encodeURIComponent("Kggbb@hotmail.com") +
   "&su=" + encodeURIComponent(subject) +
-  "&body=" + encodeURIComponent(body),
-  "_blank"
-);
+  "&body=" + body;
+
+window.open(gmailUrl, "_blank");
