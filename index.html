@@ -204,7 +204,8 @@ const essentialProducts = [
     essentialProducts.map(
       (p, i) => productCard(p, aoveProducts.length + i, true)
     ).join("");
-}
+} 
+  renderProducts();
 
   function addToCart(i){
     const existing = cart.find(x=>x.i===i);
