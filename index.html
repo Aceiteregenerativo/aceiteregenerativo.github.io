@@ -277,14 +277,24 @@ Dirección:
 
 Gracias.`;
 
-  const gmailUrl =
-    "https://mail.google.com/mail/u/0/?view=cm&fs=1" +
-    "&to=" + encodeURIComponent("Kggbb@hotmail.com") +
-    "&su=" + encodeURIComponent(subject) +
+  const to = "Kggbb@hotmail.com";
+
+  const mailto =
+    "mailto:" + to +
+    "?subject=" + encodeURIComponent(subject) +
     "&body=" + encodeURIComponent(body);
 
-  window.open(gmailUrl, "_blank"); 
+  const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+  if(isMobile){
+    window.location.href = mailto;
+  }else{
+    const gmailUrl =
+      "https://mail.google.com/mail/u/0/?view=cm&fs=1" +
+      "&to=" + encodeURIComponent(to) +
+      "&su=" + encodeURIComponent(subject) +
+      "&body=" + encodeURIComponent(body);
+
+    window.open(gmailUrl, "_blank");
+  }
 }
-</script>
-</body>
-</html>
